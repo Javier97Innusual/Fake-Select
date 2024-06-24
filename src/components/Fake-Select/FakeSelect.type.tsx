@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export type FakeSelectType = {
+    id?: string;
     name: string;
     disabled?: boolean;
     children: ReactNode;

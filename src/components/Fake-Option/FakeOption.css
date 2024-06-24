@@ -1,0 +1,14 @@
+.select-option {
+    padding: 1rem;
+    border-bottom: 2px solid black;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &.select-hidden {
+        display: none;
+    }
+}
