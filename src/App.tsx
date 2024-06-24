@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <FakeSelect
         name="SelectName"
-        disabled={true}
       >
         <FakeOption value="red">Rojo</FakeOption>
         <FakeOption value="blue">Azul</FakeOption>

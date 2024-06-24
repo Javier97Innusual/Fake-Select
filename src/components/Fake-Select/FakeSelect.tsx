@@ -4,6 +4,7 @@ import { FakeSelectType, OptionValueType } from './FakeSelect.type';
 import './FakeSelect.css';
 
 export function FakeSelect({ name, disabled, children }: FakeSelectType) {
+    const [isSelectActive, setSelectActive] = useState<boolean>(false);
     const [currentOption, setCurrentOption] = useState<OptionValueType>({
         value: '',
         name: ''
@@ -20,6 +21,8 @@ export function FakeSelect({ name, disabled, children }: FakeSelectType) {
             value: target.dataset.id,
             name: target.innerText
         });
+
+        setSelectActive(!isSelectActive);
     }
 
     return (
@@ -31,13 +34,16 @@ export function FakeSelect({ name, disabled, children }: FakeSelectType) {
                 disabled={disabled}
                 placeholder={DEFAULT_VALUE}
                 value={currentOption.name}
+                onClick={() => setSelectActive(!isSelectActive)}
             />
-            <div
-                className="select-container"
-                onClick={handleOption}
-            >
-                {children}
-            </div>
+            {!disabled && isSelectActive && (
+                <div
+                    className="select-container"
+                    onClick={handleOption}
+                >
+                    {children}
+                </div>
+            )}
         </div>
     )
 }
