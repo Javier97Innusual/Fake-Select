@@ -4,6 +4,11 @@
     width: 400px;
     position: relative;
 
+    .select-current,
+    .select-container {
+        position: relative;
+    }
+
     .select-current {
         cursor: pointer;
         padding: 1.5rem 1rem;
@@ -11,6 +16,7 @@
         font-size: 1.225rem;
         font-weight: bold;
         text-align: left;
+        background: white;
     }
 
     .select-container {
@@ -18,6 +24,11 @@
         flex-flow: column;
         border: 2px solid black;
         border-top: none;
+        position: absolute;
+        width: calc(100% - 4px);
+        background: white;
+        left: 0;
+        top: calc(0px + 100%);
     }
 
     &::after {
@@ -31,5 +42,14 @@
         &::after {
             content: '✖';
         }
+    }
+
+    .select-background {
+        position: fixed;
+        z-index: -1;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
     }
 }

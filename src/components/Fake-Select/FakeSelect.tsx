@@ -4,7 +4,8 @@ import { DEFAULT_VALUE } from './FakeSelect.constants';
 import { FakeSelectType, OptionValueType } from './FakeSelect.type';
 import './FakeSelect.css';
 
-export function FakeSelect({ id, name, disabled, children }: FakeSelectType) {
+// Mantengo el input[hidden], aunque podría quitarlo, porque así puede enviar un value por petición get. Dado que inicialmente la app usaba eso para gestionar el formulario.
+export function FakeSelect({ id, name, onChange, disabled, children }: FakeSelectType) {
     const [isSelectActive, setSelectActive] = useState<boolean>(false);
     const [currentOption, setCurrentOption] = useState<OptionValueType>({
         value: '',
@@ -22,6 +23,8 @@ export function FakeSelect({ id, name, disabled, children }: FakeSelectType) {
             value: target.dataset.id,
             name: target.innerText
         });
+
+        onChange(target.dataset.id);
 
         setSelectActive(!isSelectActive);
     }
@@ -44,12 +47,18 @@ export function FakeSelect({ id, name, disabled, children }: FakeSelectType) {
                 {currentOption.name}
             </div>
             {!disabled && isSelectActive && (
-                <div
-                    className="select-container"
-                    onClick={handleOption}
-                >
-                    {children}
-                </div>
+                <>
+                    <div
+                        className="select-container"
+                        onClick={handleOption}
+                    >
+                        {children}
+                    </div>
+                    <div
+                        className="select-background"
+                        onClick={() => setSelectActive(!isSelectActive)}
+                    ></div>
+                </>
             )}
         </div>
     )
