@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormContentType } from './index.type';
+import { FormContentType } from './App.type';
 import classNames from 'classnames';
 import { FakeOption } from './components/Fake-Option/FakeOption';
 import { FakeSelect } from './components/Fake-Select/FakeSelect';

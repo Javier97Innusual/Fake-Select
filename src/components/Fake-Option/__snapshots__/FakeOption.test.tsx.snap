@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FakeOption component should render correctly and match snapshot when hidden is false 1`] = `
+<DocumentFragment>
+  <div
+    class="select-option"
+    data-id="1"
+  >
+    Option 1
+  </div>
+</DocumentFragment>
+`;
+
+exports[`FakeOption component should render correctly and match snapshot when hidden is true 1`] = `
+<DocumentFragment>
+  <div
+    class="select-option select-hidden"
+    data-id="1"
+  >
+    Option 1
+  </div>
+</DocumentFragment>
+`;

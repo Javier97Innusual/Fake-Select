@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should render correctly and match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <form
+      id="test-form"
+      method="get"
+    >
+      <div
+        class="select-main"
+        id="SelectName"
+      >
+        <div
+          class="select-current"
+        >
+          Elije una opción
+        </div>
+      </div>
+      <button
+        form="test-form"
+        type="submit"
+        value="Submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
