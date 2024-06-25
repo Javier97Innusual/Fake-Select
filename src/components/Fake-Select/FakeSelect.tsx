@@ -1,10 +1,10 @@
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { DEFAULT_VALUE } from './FakeSelect.constants';
 import { FakeSelectType, OptionValueType } from './FakeSelect.type';
 import './FakeSelect.css';
 
-export function FakeSelect({ id, placeholder, onChange, disabled, children }: FakeSelectType) {
+export function FakeSelect({ id, placeholder, content, onChange, disabled, children }: FakeSelectType) {
     const [isSelectActive, setSelectActive] = useState<boolean>(false);
     const [currentOption, setCurrentOption] = useState<OptionValueType>({
         value: '',
@@ -27,6 +27,14 @@ export function FakeSelect({ id, placeholder, onChange, disabled, children }: Fa
 
         setSelectActive(!isSelectActive);
     }
+
+    useEffect(() => {
+        if (content === undefined) {
+            return;
+        }
+
+        setCurrentOption(content);
+    }, []);
 
     return (
         <div

@@ -3,6 +3,7 @@
     border-bottom: 2px solid black;
     font-weight: bold;
     cursor: pointer;
+    background: white;
 
     &:last-child {
         border-bottom: none;
@@ -10,5 +11,9 @@
 
     &.select-hidden {
         display: none;
+    }
+
+    &:hover {
+        background: lightgray;
     }
 }
