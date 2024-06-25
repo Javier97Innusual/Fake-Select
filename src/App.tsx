@@ -34,7 +34,7 @@ function App() {
         onSubmit={handleFormSubmit}
       >
         <FakeSelect
-          name="SelectName"
+          id="SelectName"
           onChange={handleFakeSelect}
         >
           <FakeOption value="red">Rojo</FakeOption>
