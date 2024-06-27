@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import App from './App';
-import { DEFAULT_VALUE } from './components/Fake-Select/FakeSelect.constants';
+import { DEFAULT_VALUE } from './App.constants';
 
 describe('App component', () => {
   it('should render correctly and match snapshot', () => {

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { FakeOptionType } from "./FakeOption.type";
+import { FakeOptionType } from "./FakeOption.types";
 import './FakeOption.css';
 
 export function FakeOption({ value, children, hidden }: FakeOptionType) {

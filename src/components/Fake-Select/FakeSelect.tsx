@@ -1,15 +1,10 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import classNames from 'classnames';
-import { DEFAULT_VALUE } from './FakeSelect.constants';
-import { FakeSelectType, OptionValueType } from './FakeSelect.type';
+import { FakeSelectType } from './FakeSelect.types';
 import './FakeSelect.css';
 
-export function FakeSelect({ id, placeholder, content, onChange, disabled, children }: FakeSelectType) {
+export function FakeSelect({ id, content, onChange, disabled, children }: FakeSelectType) {
     const [isSelectActive, setSelectActive] = useState<boolean>(false);
-    const [currentOption, setCurrentOption] = useState<OptionValueType>({
-        value: '',
-        name: placeholder || DEFAULT_VALUE
-    });
 
     const handleOption = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
@@ -18,23 +13,13 @@ export function FakeSelect({ id, placeholder, content, onChange, disabled, child
             return;
         }
 
-        setCurrentOption({
+        onChange({
             value: target.dataset.id,
             name: target.innerText
         });
 
-        onChange(target.dataset.id);
-
         setSelectActive(!isSelectActive);
     }
-
-    useEffect(() => {
-        if (content === undefined) {
-            return;
-        }
-
-        setCurrentOption(content);
-    }, []);
 
     return (
         <div
@@ -45,7 +30,7 @@ export function FakeSelect({ id, placeholder, content, onChange, disabled, child
                 className="select-current"
                 onClick={() => setSelectActive(!isSelectActive)}
             >
-                {currentOption.name}
+                {content.name}
             </div>
             {!disabled && isSelectActive && (
                 <>

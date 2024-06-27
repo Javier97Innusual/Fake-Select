@@ -1,14 +1,14 @@
 import { render, fireEvent } from '@testing-library/react';
 import { FakeSelect } from './FakeSelect';
 import { FakeOption } from './../Fake-Option/FakeOption';
-import { DEFAULT_VALUE } from './FakeSelect.constants';
+import { DEFAULT_VALUE } from '../../App.constants';
 
 describe('FakeSelect component', () => {
     const onChangeMock = jest.fn();
 
     it('should render correctly and match snapshot', () => {
         const { asFragment } = render(
-            <FakeSelect id="SelectName" onChange={onChangeMock}>
+            <FakeSelect id="SelectName" content={{ value: '', name: DEFAULT_VALUE }} onChange={onChangeMock}>
                 <FakeOption value="red">Rojo</FakeOption>
                 <FakeOption value="blue">Azul</FakeOption>
                 <FakeOption value="green">Verde</FakeOption>
@@ -20,7 +20,7 @@ describe('FakeSelect component', () => {
 
     it('should open options list when clicked', () => {
         const { getByText } = render(
-            <FakeSelect id="SelectName" onChange={onChangeMock}>
+            <FakeSelect id="SelectName" content={{ value: '', name: DEFAULT_VALUE }} onChange={onChangeMock}>
                 <FakeOption value="red">Rojo</FakeOption>
                 <FakeOption value="blue">Azul</FakeOption>
                 <FakeOption value="green">Verde</FakeOption>
@@ -36,7 +36,7 @@ describe('FakeSelect component', () => {
 
     it('should update current option and closes list when an option is clicked', () => {
         const { getByText, container } = render(
-            <FakeSelect id="SelectName" onChange={onChangeMock}>
+            <FakeSelect id="SelectName" content={{ value: '', name: DEFAULT_VALUE }} onChange={onChangeMock}>
                 <FakeOption value="red">Rojo</FakeOption>
                 <FakeOption value="blue">Azul</FakeOption>
                 <FakeOption value="green">Verde</FakeOption>
@@ -46,13 +46,13 @@ describe('FakeSelect component', () => {
         fireEvent.click(getByText(DEFAULT_VALUE));
         fireEvent.click(getByText('Rojo'));
 
-        expect(onChangeMock).toHaveBeenCalledWith('red');
+        expect(onChangeMock).toHaveBeenCalledWith({ name: undefined, value: 'red' });
         expect(container.querySelector('.select-container')).not.toBeInTheDocument();
     });
 
     it('should not open options list when disabled', () => {
         const { getByText, container } = render(
-            <FakeSelect id="SelectName" onChange={onChangeMock} disabled>
+            <FakeSelect id="SelectName" content={{ value: '', name: DEFAULT_VALUE }} onChange={onChangeMock} disabled>
                 <FakeOption value="red">Rojo</FakeOption>
                 <FakeOption value="blue">Azul</FakeOption>
                 <FakeOption value="green">Verde</FakeOption>
